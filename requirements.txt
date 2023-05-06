@@ -11,3 +11,4 @@ google-cloud-firestore
 matplotlib
 plotly
 sklearn
+imbalanced-learn
