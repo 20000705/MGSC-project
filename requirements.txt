@@ -4,7 +4,6 @@ pandas
 scikit-learn
 spacy==3.1.0
 spacy-lookups-data
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.1.0/en_core_web_sm-3.1.0.tar.gz
 torch
 transformers
 streamlit
