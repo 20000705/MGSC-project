@@ -19,6 +19,17 @@ import plotly.express as px
 import plotly.graph_objects as go
 import time
 from sklearn.svm import LinearSVC
+import os
+import json
+from google.oauth2 import service_account
+from google.cloud import firestore
+
+# Load the Google Cloud credentials from the environment variable
+creds_json = json.loads(os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"])
+creds = service_account.Credentials.from_service_account_info(creds_json)
+
+# Initialize the Firestore client with the credentials
+db = firestore.Client(credentials=creds)
 # Load Data
 seed = 42
 np.random.seed(seed)
@@ -97,8 +108,6 @@ training_args = TrainingArguments(
 loaded_tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
 loaded_model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased")
 loaded_trainer = Trainer(model=loaded_model, args=training_args,train_dataset=train_dataset,eval_dataset=test_dataset,)
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "spring-yifan.json"
-db = firestore.Client()
 # getting data from your firestore database - reddit collection
 reddit = db.collection(u'book-reddit')
 posts = list(reddit.stream())
@@ -141,8 +150,6 @@ def convert_from_binary(value):
 with st.spinner('Wait for it...'):
     time.sleep(5)
 st.success('Page Loaded!')
-
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "spring-yifan.json"
 
 st.title("Sentiment Analyzer")
 
