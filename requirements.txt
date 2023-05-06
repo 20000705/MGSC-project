@@ -9,5 +9,4 @@ streamlit
 google-cloud-firestore
 matplotlib
 plotly
-os
 sklearn
