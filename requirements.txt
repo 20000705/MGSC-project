@@ -1,6 +1,5 @@
 numpy
 pandas
-random
 scikit-learn
 spacy
 spacy-lookups-data
@@ -11,6 +10,4 @@ google-cloud-firestore
 matplotlib
 plotly
 os
-datetime
-time
 sklearn
